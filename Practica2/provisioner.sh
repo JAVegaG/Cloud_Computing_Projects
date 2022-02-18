@@ -1,26 +1,27 @@
-echo "instalando vsftpd"
+echo "instalando lxd"
 
 sudo apt-get update
-sudo apt-get install vsftpd -y
+sudo apt-get install lxd -y
 
-echo "creando un usuario local"
+echo "creando pagina html"
 
-sudo useradd -m julian
+sudo echo "<!DOCTYPE html>" >> index.html
+sudo echo "<html>" >> index.html
+sudo echo "<body>" >> index.html
+sudo echo "<h1>Pagina de prueba</h1>" >> index.html
+sudo echo "<p>Bienvenidos a mi contenedor LXD</p>" >> index.html
+sudo echo "</body>" >> index.html
+sudo echo "</html>" >> index.html
 
-echo "configurando vsftpd"
+echo "configurando lxd"
 
-sudo mkdir /var/anonymous
-sudo mkdir /var/anonymous/publico
-sudo chmod 777 /var/anonymous/publico
-sudo chmod 555 /var/anonymous
-
-
-sudo sed -i 's/#ftpd_banner=Welcome to blah FTP service./ftpd_banner=Sherk? Welcome./g' /etc/vsftpd.conf
-
-
-echo "habilitando vsftpd"
-
-sudo systemctl start vsftpd
-sudo systemctl enable vsftpd
-sudo systemctl restart vsftpd 
- 
+sudo newgrp lxd
+sudo lxd init --auto
+sleep 60
+sudo lxc launch ubuntu:20.04 web
+sleep 60
+sudo lxc exec web -- sudo apt-get install apache2 -y
+sudo lxc exec web -- sudo systemctl status apache2
+sudo lxc file push index.html web/var/www/html/index.html
+sudo lxc exec web -- sudo systemctl restart apache2
+sudo lxc config device add web myport80 proxy listen=tcp:192.168.100.3:8080 connect=tcp:127.0.0.1:80
