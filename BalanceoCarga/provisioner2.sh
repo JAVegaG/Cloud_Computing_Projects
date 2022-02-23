@@ -11,7 +11,7 @@ sudo echo "<!DOCTYPE html>" >> index.html
 sudo echo "<html>" >> index.html
 sudo echo "<body>" >> index.html
 sudo echo "<h1>Pagina de prueba</h1>" >> index.html
-sudo echo "<p>Bienvenidos a mi servidor Web1</p>" >> index.html
+sudo echo "<p>Bienvenidos a mi servidor Web2</p>" >> index.html
 sudo echo "</body>" >> index.html
 sudo echo "</html>" >> index.html
 
