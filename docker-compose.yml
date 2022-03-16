@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  vsfptd:
+    image: panubo/vsftpd
+    #image: pablokbs/panubo-vsftpd-arm
+    environment:
+      - FTP_USER=julian
+      - FTP_PASSWORD=admin
+    volumes:
+      - /home/vagrant/:/srv
+    expose:
+      - 21
+    network_mode: host
