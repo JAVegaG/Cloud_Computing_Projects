@@ -1,6 +1,6 @@
-# **Computación en la Nube**
+# **Cloud Computing**
 
-Este repositorio tiene como objetivo almacenar el desarrollo de las prácticas relacionadas a la administración de servidores linux virtualizados (VirtualBox +  Vagrant), el uso de contenedores y herramientas de networking. Estas se actualizarán semana a semana y se muestran a continuación:
+This repository aims to store the development of practices related to the administration of virtualized Linux servers (VirtualBox + Vagrant), the use of containers, and networking tools. These will be updated week by week and are shown below:
 
 - Vagrant
 - LXD
